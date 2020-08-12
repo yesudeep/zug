@@ -1,0 +1,44 @@
+test --test_output=errors
+build --verbose_failures
+
+# See: https://docs.microsoft.com/en-us/cpp/build/reference/zc-externconstexpr?view=vs-2019
+build:msvc --cxxopt='/std:c++14'
+build:msvc --cxxopt='/Zc:externConstexpr'       # for ZUG_INLINE_CONSTEXPR
+
+build:cc --cxxopt='-std=c++14'
+build:cc --cxxopt='-fdiagnostics-color=always'  # clang ignores this gcc flag.
+
+# See: https://developers.redhat.com/blog/2020/03/26/static-analysis-in-gcc-10/
+build:gcc_analyze --cxxopt='-fanalyzer'
+
+build --enable_platform_specific_config
+build:windows --config=msvc
+build:linux   --config=cc
+build:macos   --config=cc
+build:freebsd --config=cc
+build:openbsd --config=cc
+
+build:debug --compilation_mode=dbg
+build:debug --copt=-g
+build:debug --strip=never
+
+build:asan --action_env=ASAN_OPTIONS=detect_leaks=1:color=always
+build:asan --copt=-O0
+build:asan --copt=-fno-omit-frame-pointer
+build:asan --copt=-fsanitize=address
+build:asan --linkopt=-fsanitize=address
+build:asan --strip=never
+
+build:asan_macos --action_env=ASAN_OPTIONS=detect_leaks=0
+build:asan_macos --copt -D_FORTIFY_SOURCE=0
+build:asan_macos --copt -Wno-macro-redefined
+build:asan_macos --copt=-fno-omit-frame-pointer
+build:asan_macos --copt=-fsanitize=address
+build:asan_macos --copt=-O0
+build:asan_macos --linkopt=-fsanitize=address
+build:asan_macos --strip=never
+
+build:tsan --copt=-fno-omit-frame-pointer
+build:tsan --copt=-fsanitize=thread
+build:tsan --linkopt=-fsanitize=thread
+build:tsan --strip=never

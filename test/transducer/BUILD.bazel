@@ -1,0 +1,624 @@
+load("@rules_cc//cc:defs.bzl", "cc_test")
+load("//bazel:defs.bzl", "ZUG_COPTS", "ZUG_TEST_DEFINES")
+
+test_suite(
+    name = "all_tests",
+    tests = [
+        ":cat_test",
+        ":chain_test",
+        ":count_test",
+        ":dedupe_test",
+        ":distinct_test",
+        ":drop_test",
+        ":drop_while_test",
+        ":each_test",
+        ":eager_test",
+        ":enumerate_test",
+        ":filter_test",
+        ":interelave_test",
+        ":interleave_test",
+        ":interpose_test",
+        ":iter_test",
+        ":map_indexed_test",
+        ":map_test",
+        ":mapcat_test",
+        ":partition_by_test",
+        ":partition_test",
+        ":product_test",
+        ":random_sample_test",
+        ":range_test",
+        ":read_test",
+        ":readbuf_test",
+        ":remove_test",
+        ":repeat_test",
+        ":replace_test",
+        ":scan_test",
+        ":sink_test",
+        ":take_nth_test",
+        ":take_test",
+        ":take_while_test",
+        ":transducer_test",
+        ":unzip_test",
+        ":write_test",
+        ":writebuf_test",
+        ":zip_test",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_test(
+    name = "cat_test",
+    size = "small",
+    srcs = [
+        "cat.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "chain_test",
+    size = "small",
+    srcs = [
+        "chain.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "count_test",
+    size = "small",
+    srcs = [
+        "count.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "dedupe_test",
+    size = "small",
+    srcs = [
+        "dedupe.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "distinct_test",
+    size = "small",
+    srcs = [
+        "distinct.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "drop_test",
+    size = "small",
+    srcs = [
+        "drop.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug_with_boost",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "drop_while_test",
+    size = "small",
+    srcs = [
+        "drop_while.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug_with_boost",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "each_test",
+    size = "small",
+    srcs = [
+        "each.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "eager_test",
+    size = "small",
+    srcs = [
+        "eager.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug",
+        "//test:spies",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "enumerate_test",
+    size = "small",
+    srcs = [
+        "enumerate.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "filter_test",
+    size = "small",
+    srcs = [
+        "filter.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug_with_boost",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "interleave_test",
+    size = "small",
+    srcs = [
+        "interleave.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "interelave_test",
+    size = "small",
+    srcs = [
+        "interelave.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "interpose_test",
+    size = "small",
+    srcs = [
+        "interpose.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "iter_test",
+    size = "small",
+    srcs = [
+        "iter.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug_with_boost",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "map_test",
+    size = "small",
+    srcs = [
+        "map.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "map_indexed_test",
+    size = "small",
+    srcs = [
+        "map_indexed.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "mapcat_test",
+    size = "small",
+    srcs = [
+        "mapcat.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "partition_test",
+    size = "small",
+    srcs = [
+        "partition.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug_with_boost",
+        "//test:spies",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "partition_by_test",
+    size = "small",
+    srcs = [
+        "partition_by.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug_with_boost",
+        "//test:spies",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "product_test",
+    size = "small",
+    srcs = [
+        "product.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug_with_boost",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "random_sample_test",
+    size = "small",
+    srcs = [
+        "random_sample.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "range_test",
+    size = "small",
+    srcs = [
+        "range.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "read_test",
+    size = "small",
+    srcs = [
+        "read.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug_with_boost",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "readbuf_test",
+    size = "small",
+    srcs = [
+        "readbuf.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "remove_test",
+    size = "small",
+    srcs = [
+        "remove.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "repeat_test",
+    size = "small",
+    srcs = [
+        "repeat.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "replace_test",
+    size = "small",
+    srcs = [
+        "replace.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "scan_test",
+    size = "small",
+    srcs = [
+        "scan.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "sink_test",
+    size = "small",
+    srcs = [
+        "sink.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug",
+        "//test:spies",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "take_test",
+    size = "small",
+    srcs = [
+        "take.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug_with_boost",
+        "//test:spies",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "take_nth_test",
+    size = "small",
+    srcs = [
+        "take_nth.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug",
+        "//test:spies",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "take_while_test",
+    size = "small",
+    srcs = [
+        "take_while.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug",
+        "//test:spies",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "transducer_test",
+    size = "small",
+    srcs = [
+        "transducer.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "unzip_test",
+    size = "small",
+    srcs = [
+        "unzip.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "write_test",
+    size = "small",
+    srcs = [
+        "write.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "writebuf_test",
+    size = "small",
+    srcs = [
+        "writebuf.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)
+
+cc_test(
+    name = "zip_test",
+    size = "small",
+    srcs = [
+        "zip.cpp",
+    ],
+    copts = ZUG_COPTS,
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)

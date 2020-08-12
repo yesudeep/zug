@@ -1,0 +1,23 @@
+load("@rules_cc//cc:defs.bzl", "cc_test")
+
+cc_test(
+    name = "zug_test",
+    size = "small",
+    srcs = ["zug_test.cc"],
+    copts = [
+        "--std=c++14",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "@com_google_googletest//:gtest_main",
+        "@zug",
+    ],
+)
+
+test_suite(
+    name = "remote_tests",
+    tests = [
+        # ... other remote tests ...
+        "@zug//:all_tests",
+    ],
+)

@@ -1,0 +1,40 @@
+load("@rules_cc//cc:defs.bzl", "cc_library")
+
+cc_library(
+    name = "decl",
+    hdrs = [
+        "decl.hpp",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug",
+    ],
+)
+
+cc_library(
+    name = "client1",
+    srcs = [
+        "client1.cpp",
+    ],
+    hdrs = [
+        "client1.hpp",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        ":decl",
+    ],
+)
+
+cc_library(
+    name = "client2",
+    srcs = [
+        "client2.cpp",
+    ],
+    hdrs = [
+        "client2.hpp",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        ":decl",
+    ],
+)

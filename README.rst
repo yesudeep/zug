@@ -156,6 +156,63 @@ This is a **header only** library but to be configured correctly you need to run
 
 Or you can just copy the ``zug`` subfolder somewhere in your *include path*.
 
+Or if you prefer using `Bazel`_, you can simply include
+the repository in your `WORKSPACE` file like this:
+
+.. code-block::
+
+   load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+   http_archive(
+       name = "zug",
+       strip_prefix = "zug-<commit-or-branch>",
+       urls = ["https://github.com/arximboldi/zug/archive/<commit-or-branch>.tar.gz"],
+       # Add the following to avoid security risks.
+       sha256 = "TODO"
+   )
+
+   load("@zug//bazel:deps.bzl", "zug_deps")
+
+   zug_deps()
+
+   load("@com_github_nelhage_rules_boost//:boost/boost.bzl", "boost_deps")
+
+   boost_deps()
+
+and use `zug` normally as you would any other library:
+
+.. code-block::
+
+   load("@rules_cc//cc:defs.bzl", "cc_binary")
+
+   cc_binary(
+      name = "myapp",
+      srcs = ["myapp.cpp"],
+      deps = [
+         "@zug",  # Causes Bazel to fetch, include, compile, and link in one step.
+      ],
+   )
+
+Consider incorporating `zug`'s test suite into your Bazel workspace so that it is
+continuously tested alongside your code so that if something breaks while updating
+you'll know sooner:
+
+.. code-block::
+
+   test_suite(
+      name = "all_tests",
+      tests = [
+         # ... other remote tests ...
+         "@zug//:all_tests",
+      ],
+   )
+
+You can find a working example of a Bazel workspace in the `example/bazel` directory.
+
+
+
+.. _`Bazel`: https://bazel.build
+
 Development
 -----------
 

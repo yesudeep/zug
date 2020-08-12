@@ -14,7 +14,11 @@
 #include <zug/transducer/enumerate.hpp>
 #include <zug/transducer/sink.hpp>
 
+#ifndef HAVE_BAZEL_BUILD
 #include "../spies.hpp"
+#else
+#include "test/spies.hpp"
+#endif
 
 using namespace zug;
 

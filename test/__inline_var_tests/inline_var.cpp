@@ -6,8 +6,13 @@
 // See accompanying file LICENSE or copy at http://boost.org/LICENSE_1_0.txt
 //
 
+#ifndef HAVE_BAZEL_BUILD
 #include "resources/client1.hpp"
 #include "resources/client2.hpp"
+#else
+#include "test/__inline_var_tests/resources/client1.hpp"
+#include "test/__inline_var_tests/resources/client2.hpp"
+#endif
 
 #include <zug/detail/inline_constexpr.hpp>
 

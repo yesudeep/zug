@@ -16,7 +16,11 @@
 #include <zug/transducer/map.hpp>
 #include <zug/transducer/take.hpp>
 
+#ifndef HAVE_BAZEL_BUILD
 #include "../spies.hpp"
+#else
+#include "test/spies.hpp"
+#endif
 
 #include <vector>
 

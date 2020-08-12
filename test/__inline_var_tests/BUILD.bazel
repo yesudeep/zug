@@ -1,0 +1,26 @@
+load("@rules_cc//cc:defs.bzl", "cc_test")
+load("//bazel:defs.bzl", "ZUG_TEST_DEFINES")
+
+test_suite(
+    name = "all_tests",
+    tests = [
+        ":inline_var_test",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_test(
+    name = "inline_var_test",
+    size = "small",
+    srcs = [
+        "inline_var.cpp",
+    ],
+    defines = ZUG_TEST_DEFINES,
+    visibility = ["//visibility:public"],
+    deps = [
+        "//:zug",
+        "//test/__inline_var_tests/resources:client1",
+        "//test/__inline_var_tests/resources:client2",
+        "@com_github_catchorg_catch2//:catch2",
+    ],
+)

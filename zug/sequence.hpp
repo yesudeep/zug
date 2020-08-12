@@ -18,6 +18,8 @@
 #include <zug/detail/iterator_facade.hpp>
 #include <zug/detail/iterator_range.hpp>
 
+#include <boost/mpl/eval_if.hpp>
+
 #include <iostream>
 #include <vector>
 

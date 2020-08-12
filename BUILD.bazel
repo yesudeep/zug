@@ -1,0 +1,60 @@
+load("@rules_cc//cc:defs.bzl", "cc_library")
+load("//bazel:defs.bzl", "ZUG_DEFINES")
+
+licenses(["notice"])  # Boost 1.0
+
+exports_files(["LICENSE"])
+
+alias(
+    name = "zug",
+    actual = ":zug_with_boost",
+    visibility = ["//visibility:public"],
+)
+
+# Please use the alias above instead of depending on this target.
+# This target rule is named such to clearly earmark other targets
+# in our codebase that use dependencies that we may want to
+# remove over time.
+#
+# Use the following to find all the targets that depend on :zug_with_boost
+#
+# ❯ bazel query 'rdeps(..., //:zug_with_boost)' --output label
+#
+# Over time these should reduce and then we can drop the alias
+# and rename this target to 'zug'.
+cc_library(
+    name = "zug_with_boost",
+    hdrs = glob([
+        "include/zug/**/*.hpp",
+        # Including these files here as a temporary workaround for
+        # Bazel's missing sandbox support on Windows.
+        # Without this, you'd get errors about missing dependency
+        # declarations.
+        "zug/**/*.hpp",
+    ]),
+    defines = ZUG_DEFINES + [
+        "ZUG_VARIANT_STD=0",
+        "ZUG_VARIANT_BOOST=1",
+        "ZUG_ENABLE_BOOST=1",
+    ],
+    includes = [
+        "include",
+    ],
+    linkstatic = True,
+    visibility = ["//visibility:public"],
+    deps = [
+        "@boost//:mpl",
+        "@boost//:range",
+        "@boost//:variant",
+    ],
+)
+
+test_suite(
+    name = "all_tests",
+    tests = [
+        "//test:all_tests",
+        "//test/__inline_var_tests:all_tests",
+        "//test/transducer:all_tests",
+    ],
+    visibility = ["//visibility:public"],
+)
