@@ -5,6 +5,16 @@ licenses(["notice"])  # Boost 1.0
 
 exports_files(["LICENSE"])
 
+config_setting(
+    name = "platform_freebsd",
+    constraint_values = ["@platforms//os:freebsd"],
+)
+
+config_setting(
+    name = "platform_openbsd",
+    constraint_values = ["@platforms//os:openbsd"],
+)
+
 alias(
     name = "zug",
     actual = ":zug_with_boost",
@@ -40,6 +50,11 @@ cc_library(
     includes = [
         "include",
     ],
+    linkopts = select({
+        ":platform_freebsd": ["-lm"],
+        ":platform_openbsd": ["-lm"],
+        "//conditions:default": [],
+    }),
     linkstatic = True,
     visibility = ["//visibility:public"],
     deps = [
